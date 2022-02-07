@@ -3,6 +3,7 @@ package br.com.maricato.loja;
 import br.com.maricato.loja.pedido.GeraPedido;
 import br.com.maricato.loja.pedido.GeraPedidoHandler;
 import br.com.maricato.loja.pedido.acao.EnviarEmailPedido;
+import br.com.maricato.loja.pedido.acao.LogDePedido;
 import br.com.maricato.loja.pedido.acao.SalvarPedidoNoBancoDeDados;
 
 import java.math.BigDecimal;
@@ -17,7 +18,8 @@ public class TestesPedidos {
 		GeraPedido gerador = new GeraPedido(cliente, valorOrcamento, quantidadeItens);
 		GeraPedidoHandler handler = new GeraPedidoHandler(
 				Arrays.asList(new SalvarPedidoNoBancoDeDados(),
-						new EnviarEmailPedido())
+								new EnviarEmailPedido(),
+									new LogDePedido())
 		);
 		handler.executa(gerador);
 	}
